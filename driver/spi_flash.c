@@ -52,6 +52,7 @@
 #define DF_FAMILY_AT26F			0x00
 #define DF_FAMILY_AT45			0x20
 #define DF_FAMILY_AT26DF		0x40	/* AT25DF and AT26DF */
+#define DF_FAMILY_AT25SF		0x80	/* AT25SF041 */
 
 #define DF_FAMILY_N25Q			0xA0
 #define DF_FAMILY_M25P			0x20
@@ -585,7 +586,8 @@ static int df_desc_init(struct dataflash_descriptor *df_desc, unsigned char vend
 		case MANUFACTURER_ID_ATMEL: {
 
 			if ((df_desc->family == DF_FAMILY_AT26F)
-				|| (df_desc->family == DF_FAMILY_AT26DF)) {
+				|| (df_desc->family == DF_FAMILY_AT26DF)
+				|| (df_desc->family == DF_FAMILY_AT25SF)) {
 				ret = df_at25_desc_init(df_desc);
 				if (ret)
 					return ret;
